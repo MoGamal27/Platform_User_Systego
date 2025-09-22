@@ -3,7 +3,7 @@ import { Request, Response } from "express";
 import { OAuth2Client } from "google-auth-library";
 import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
-import { UserModel } from "../models/shema/auth/User";
+import { UserModel } from "../models/shema/auth/platformUser";
 
 dotenv.config();
 
