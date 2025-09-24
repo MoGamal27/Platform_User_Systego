@@ -76,6 +76,17 @@ export const editProfile = asyncHandler(async (req: Request , res: Response) => 
   return SuccessResponse(res, { message: 'Profile updated successfully'}, 200);
 });
 
+// getProfiel user
+
+export const getProfile = asyncHandler(async (req: Request , res: Response) => {
+  const user = await Platform_User.findById(req.user?.id).select('-password -v')
+  if (!user) {
+    throw new NotFound('User not found');
+  }
+  return SuccessResponse(res, { message: 'Profile retrieved successfully', data: user}, 200);
+});
+
+
 
 
 
