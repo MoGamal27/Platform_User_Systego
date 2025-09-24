@@ -33,6 +33,12 @@ import bcrypt from 'bcrypt';
       type: String,
       default: null,
     },
+    wishlist: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: "Product",
+      },
+    ],
   },
   { timestamps: true, }
 );
