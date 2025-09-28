@@ -3,11 +3,13 @@ import { Schema, model, Document } from 'mongoose';
 
 const addressSchema = new Schema({
   country: {
-    type: String,
+    type: Schema.Types.ObjectId, 
+    ref: 'Country',
     required: true
   },
   city: {
-     type: String,
+     type: Schema.Types.ObjectId, 
+    ref: 'City',
     required: true
   },
   zone: {
