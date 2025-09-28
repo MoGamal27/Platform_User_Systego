@@ -5,10 +5,15 @@ import asyncHandler from 'express-async-handler';
 import { NotFound } from '../../Errors/NotFound';
 import { BadRequest } from '../../Errors/BadRequest';
 import { SuccessResponse } from '../../utils/response';
+import { saveBase64Image } from '../../utils/handleImages';
 
 export const createOrder = asyncHandler(async (req, res) => {
   const { cartItems, addressData, paymentMethod } = req.body;
   const  userId  = req.user?.id;
+
+  const base64 = req.body.proofImage;
+    const folder = 'payments';
+    const imageUrl = await saveBase64Image(base64, userId, req, folder);
 
   // Validate cart items and calculate total price
   let totalPrice = 0;

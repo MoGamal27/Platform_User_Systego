@@ -24,9 +24,19 @@ const orderSchema = new Schema({
        ref: 'Address'
     },
     paymentMethod: {
+    type: Schema.Types.ObjectId, 
+    ref: "PaymentMethod",
+    required: true
+    },
+    proofImage: {
      type: String,
     required: true
-    }
+    },
+  status: {
+    type: String,
+    enum: ['pending', 'rejected', 'approved'],
+    default: 'pending'
+  },
 }, {
   timestamps: true
 });
